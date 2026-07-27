@@ -28,6 +28,11 @@ const postSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    typeFeed: {
+      type: String,
+      enum: ["feed", "story"],
+      default: "feed",
+    },
   },
   { timestamps: true },
 );
