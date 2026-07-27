@@ -28,6 +28,8 @@ export default function Home() {
     isLoading: isLoadingMore,
   });
 
+  return <p>tes</p>;
+
   return (
     <SidebarProvider>
       <div className="hidden lg:block">
