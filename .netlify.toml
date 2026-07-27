@@ -1,0 +1,10 @@
+[build]
+  command = "cd social-media && npm run build"
+  publish = "social-media/.next"
+  # exit 0 = selalu skip build otomatis dari push Git.
+  # Build hook (dipanggil dari GitHub Actions setelah CI lolos) TIDAK
+  # terpengaruh oleh ignore command ini -- build hook selalu tetap jalan.
+  ignore = "exit 0"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
