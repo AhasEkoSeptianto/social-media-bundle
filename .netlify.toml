@@ -1,6 +1,7 @@
 [build]
 base = "social-media"
 command = "npm run build"
+ignore = "exit 0"
 
 [[plugins]]
 package = "@netlify/plugin-nextjs"
