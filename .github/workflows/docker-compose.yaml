@@ -23,7 +23,6 @@ jobs:
           cache: "npm"
 
       # front end
-      - name: "Frontend bundle"
       - run: |
           cd social-media
           npm ci
@@ -31,7 +30,6 @@ jobs:
           npm test
 
       # backend
-      - name: "Backend bundle"
       - run: |
           cd social-media-be
           npm ci
