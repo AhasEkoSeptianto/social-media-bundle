@@ -109,4 +109,4 @@ jobs:
       - name: Trigger Render Deploy
         run: curl -X GET "$RENDER_DEPLOY_HOOK"
         env:
-          NETLIFY_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
+          RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
