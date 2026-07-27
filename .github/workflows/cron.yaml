@@ -24,4 +24,8 @@ jobs:
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          CLOUDINARY_NAME: ${{ secrets.CLOUDINARY_NAME }}
+          CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+          CLOUDINARY_SECRET_KEY: ${{ secrets.CLOUDINARY_SECRET_KEY }}
         run: npm run cron
