@@ -21,6 +21,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
+          cache-dependency-path: social-media/package-lock.json
 
       # front end
       - run: |
@@ -43,6 +44,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
+          cache-dependency-path: social-media-be/package-lock.json
 
       - run: |
           cd social-media-be
