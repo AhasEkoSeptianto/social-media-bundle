@@ -2,6 +2,7 @@ version: "3.9"
 
 services:
   frontend:
+    image: ekozzi2/social-media-prism-frontend:latest
     build:
       context: ./social-media
       # target: dev
@@ -23,6 +24,7 @@ services:
       - backend
 
   backend:
+    image: ekozzi2/social-media-prism-backend:latest
     build:
       context: ./social-media-be
       # target: dev
