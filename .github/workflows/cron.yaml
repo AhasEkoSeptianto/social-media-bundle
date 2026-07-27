@@ -23,4 +23,5 @@ jobs:
       - working-directory: social-media-be
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
         run: npm run cron
