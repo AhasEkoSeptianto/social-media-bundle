@@ -63,9 +63,18 @@ async function deletePostServices({ user_id, post_id }) {
   return post;
 }
 
-async function getPostServices({ page, limit, user_id, isMyPost, images }) {
+async function getPostServices({
+  page,
+  limit,
+  user_id,
+  isMyPost,
+  images,
+  typePost,
+}) {
   const skip = (page - 1) * limit;
-  const filter = {};
+  const filter = {
+    typePost: typePost ?? "post",
+  };
 
   if (isMyPost) {
     filter.author = user_id;
@@ -76,6 +85,8 @@ async function getPostServices({ page, limit, user_id, isMyPost, images }) {
       $ne: "",
     };
   }
+
+  console.log(typePost, "<=== here");
 
   const [posts, total] = await Promise.all([
     Post.find(filter)

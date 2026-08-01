@@ -2,7 +2,7 @@ import { vi, test, beforeEach } from "vitest";
 import * as postApi from "@/lib/api/posts.api";
 import userEvent from "@testing-library/user-event";
 import { render, screen, waitFor } from "@testing-library/react";
-import PostStory from "@/components/shared/PostStory";
+import PostStory from "@/components/shared/PostFeed";
 
 // setup agar bisa memangil api login route
 vi.mock("@/lib/api/posts.api", () => ({

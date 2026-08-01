@@ -23,6 +23,7 @@ import { usePosts } from "@/hooks/posts/usePosts";
 import { Spinner } from "../ui/spinner";
 import { useUser } from "@/hooks/auths/useUser";
 import { Field, FieldLabel } from "../ui/field";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 export default function PostStory() {
   const [imageurl, setImageUrl] = useState<string | null>(null);
@@ -67,15 +68,13 @@ export default function PostStory() {
           className="flex items-start justify-between gap-3"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="rounded-full p-[2px] bg-[#0d0d12]">
-            <Image
+          <Avatar size="lg">
+            <AvatarImage
               src={user?.avatarUrl || "/images/person3.avif"}
-              width={80}
-              height={80}
-              alt="prof"
-              className="rounded-full"
+              alt="post feed"
             />
-          </div>
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
           <div className="space-y-2 w-full">
             <Textarea
               placeholder="whats on your mind?"

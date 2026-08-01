@@ -8,6 +8,14 @@ export async function getPosts(): Promise<CreatePostFormData> {
   return res.json();
 }
 
+export async function getStory(): Promise<CreatePostFormData> {
+  const res = await nextFetcher(`${API_URL}/api/posts?type=story`, {
+    credentials: "include",
+  });
+  if (!res.ok) throw new Error("Gagal mengambil posts");
+  return res.json();
+}
+
 export async function getPostById(id: string): Promise<CreatePostFormData> {
   const res = await fetch(`${API_URL}/api/posts/${id}`, {
     credentials: "include",

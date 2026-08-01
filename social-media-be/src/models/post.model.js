@@ -28,10 +28,10 @@ const postSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    typeFeed: {
+    typePost: {
       type: String,
-      enum: ["feed", "story"],
-      default: "feed",
+      enum: ["post", "story"],
+      default: "post",
     },
   },
   { timestamps: true },

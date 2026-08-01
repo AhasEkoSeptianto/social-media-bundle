@@ -4,7 +4,7 @@ import Image from "next/image";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/shared/Sidebar";
 import StoryFeed from "@/components/shared/StoryFeed";
-import PostStory from "@/components/shared/PostStory";
+import PostStory from "@/components/shared/PostFeed";
 import Feed from "@/components/freatures/feed/feed";
 import { FeedTypes } from "@/type/components/features/feed";
 import { Input } from "@/components/ui/input";

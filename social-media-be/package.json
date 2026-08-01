@@ -4,6 +4,8 @@
   "description": "Express.js backend social media",
   "main": "src/server.js",
   "type": "commonjs",
+  "legacyWatch": true,
+  "delay": 500,
   "scripts": {
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",

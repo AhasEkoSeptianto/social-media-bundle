@@ -36,6 +36,7 @@ async function getPost(req, res, next) {
     const isMyPost = req.query.myPost;
     const images = req.query.images;
     const user_id = req.user.id;
+    const typePost = req.query.type;
 
     const posts = await getPostServices({
       page,
@@ -43,6 +44,7 @@ async function getPost(req, res, next) {
       user_id,
       isMyPost,
       images,
+      typePost,
     });
 
     res.status(200).json({
