@@ -65,7 +65,6 @@ const dummyDataListChat = [
 export default function MessagePage() {
   const { user } = useUser();
   const { data } = useSWR("/api/chat/list-chat", nextFetcher);
-  console.log(data);
   const [selectedConversation, setSelectedConversation] = useState<any>(null);
   const [selectedConversationId, setSelectedConversationId] = useState<
     string | null

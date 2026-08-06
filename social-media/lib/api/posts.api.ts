@@ -43,6 +43,21 @@ export async function createPost(data: {
   return res;
 }
 
+export async function createStory(data: { image: File; content: string }) {
+  const formData = new FormData();
+
+  formData.append("content", data.content);
+  formData.append("image", data.image);
+
+  const res = await nextFetcher("/api/posts/create?type=story", {
+    credentials: "include",
+    method: "POST",
+    body: formData,
+  });
+  if (!res.success) throw new Error("Gagal mengambil posts");
+  return res;
+}
+
 export async function deletePost(
   post_id: string,
 ): Promise<{ success: boolean }> {

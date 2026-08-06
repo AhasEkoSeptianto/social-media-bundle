@@ -6,7 +6,6 @@ const connectDB = require("./config/database");
 const { port, env } = require("./config/env");
 const logger = require("./utils/logger");
 const corsOptions = require("./config/cors");
-
 const server = http.createServer(app);
 
 const io = new Server(server, {

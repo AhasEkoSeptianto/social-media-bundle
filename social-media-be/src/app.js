@@ -13,6 +13,8 @@ const {
 } = require("./middleware/error.middleware");
 const fileUpload = require("express-fileupload");
 
+const { swaggerUi, specs } = require("./swagger");
+
 const app = express();
 
 // Security & parsing middleware
@@ -30,6 +32,7 @@ app.use(
 if (env !== "test") {
   app.use(morgan(env === "production" ? "combined" : "dev"));
 }
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 // Health check
 app.get("/health", (req, res) => res.status(200).json({ status: "ok" }));

@@ -11,6 +11,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import CreateStoryForm from "../forms/CreateStoryForm";
+import { useState } from "react";
 
 const stories = [
   { name: "Ariana", img: "/images/person1.avif", hasStory: true },
@@ -24,6 +25,7 @@ const stories = [
 ];
 
 export default function StoryFeed() {
+  const [togleDialog, setTogleDialog] = useState(false);
   const {
     data: story,
     error,
@@ -32,14 +34,13 @@ export default function StoryFeed() {
     shouldRetryOnError: false,
   });
 
-  console.log(story);
   return (
     <Card className="bg-brand text-white p-4">
       <CardContent>
         <div className="flex items-center space-x-4">
           <div className="flex flex-col items-center gap-1 shrink-0">
-            <Dialog>
-              <DialogTrigger>
+            <Dialog open={togleDialog}>
+              <DialogTrigger onClick={() => setTogleDialog(true)}>
                 <div>
                   <div
                     className={`relative rounded-full p-[2px] ${"bg-neutral-600"}`}
@@ -60,9 +61,11 @@ export default function StoryFeed() {
                   <span className="text-xs text-purple-300">your story</span>
                 </div>
               </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>Post Story</DialogHeader>
-                <CreateStoryForm />
+              <DialogContent
+                showCloseButton={false}
+                className="sm:max-w-[50vw]  bg-brand p-2"
+              >
+                <CreateStoryForm onSuccess={() => setTogleDialog(false)} />
               </DialogContent>
             </Dialog>
           </div>

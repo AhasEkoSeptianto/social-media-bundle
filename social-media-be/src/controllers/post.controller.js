@@ -9,18 +9,25 @@ const {
 
 async function createPost(req, res, next) {
   try {
-    const { content } = req.body;
+    const { content, type } = req.body;
 
     const fileImage = req.files?.image;
     const temp_img_path = fileImage?.tempFilePath;
     const user_id = req.user.id;
-    if (!content) {
-      return res.status(400).json({
-        success: false,
-        message: "content wajib diisi",
-      });
-    }
-    const post = await createPostServices({ user_id, content, temp_img_path });
+    // if (!content) {
+    //   return res.status(400).json({
+    //     success: false,
+    //     message: "content wajib diisi",
+    //   });
+    // }
+    if (!type) type = "post";
+    console.log(type);
+    const post = await createPostServices({
+      user_id,
+      content,
+      temp_img_path,
+      type,
+    });
     res.status(200).json({
       success: true,
     });

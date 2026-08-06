@@ -4,10 +4,12 @@ import { NextRequest, NextResponse } from "next/server";
 const EXPRESS_API_URL = process.env.BACKEND_INTERNAL_URL; // https://social-media-be-4888.vercel.app
 
 export async function POST(req: NextRequest) {
-  // console.log("==================================");
-  // console.log(req.headers.get("content-type"));
   const cookie = req.headers.get("cookie");
   const formData = await req.formData();
+
+  const typePostParams = req.nextUrl.searchParams.get("type");
+
+  formData.append("type", typePostParams ? typePostParams : "post");
 
   const backendRes = await fetch(`${EXPRESS_API_URL}/api/posts/create`, {
     method: "POST",

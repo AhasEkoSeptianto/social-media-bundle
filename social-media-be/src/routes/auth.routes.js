@@ -12,6 +12,18 @@ const router = express.Router();
 
 router.post("/google", loginWithGoogle);
 router.post("/register", register);
+
+/**
+ * @swagger
+ * /api/posts:
+ *   get:
+ *     summary: Get all posts
+ *     tags:
+ *       - Posts
+ *     responses:
+ *       200:
+ *         description: Success
+ */
 router.post("/login", loginWithEmail);
 router.get("/me", requireAuth, getCurrentUser);
 router.post("/logout", logout);

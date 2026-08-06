@@ -4,7 +4,6 @@ const EXPRESS_API_URL = process.env.BACKEND_INTERNAL_URL; // https://social-medi
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  console.log("EXPRESS_API_URL =", process.env.EXPRESS_API_URL);
 
   const backendRes = await fetch(`${EXPRESS_API_URL}/api/auth/login`, {
     method: "POST",

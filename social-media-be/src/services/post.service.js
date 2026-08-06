@@ -9,25 +9,27 @@ const {
 const { UploadImage } = require("./cloudinary.service");
 const { default: mongoose } = require("mongoose");
 
-async function createPostServices({ user_id, content, temp_img_path }) {
-  // uploadedImages = hasil dari proses upload ke Cloudinary/S3,
-  // formatnya array of { url, publicId }
+async function createPostServices({ user_id, content, temp_img_path, type }) {
   let options = {
     author: user_id,
     postContext: content,
+    typePost: type,
   };
   if (temp_img_path) {
     let saveImg = await UploadImage(temp_img_path);
-    options.images = saveImg;
+    options.images = saveImg.url;
+    options.imagesPublicId = saveImg.public_id;
   }
 
   const post = await Post.create(options);
 
-  await userModel.findByIdAndUpdate(user_id, {
-    $inc: {
-      postCount: +1,
-    },
-  });
+  if (type === "post") {
+    await userModel.findByIdAndUpdate(user_id, {
+      $inc: {
+        postCount: +1,
+      },
+    });
+  }
 
   return post;
 }
@@ -85,8 +87,6 @@ async function getPostServices({
       $ne: "",
     };
   }
-
-  console.log(typePost, "<=== here");
 
   const [posts, total] = await Promise.all([
     Post.find(filter)
